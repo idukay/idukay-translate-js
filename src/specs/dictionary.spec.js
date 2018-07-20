@@ -1,29 +1,12 @@
 import dictionary from 'dictionary';
 
-fdescribe('when ', () => {
+describe('Dictionary', () => {
   let dictionaryInstance;
-  const dictionaries = [
-    {
-      id: 'es-ec',
-      label: 'ES',
-      values: [
-        {key: 'key1', value: 'esTranslateKey1'},
-        {key: 'key2', value: 'esTranslateKey2'}
-      ]
-    },
-    {
-      id: 'en-us',
-      label: 'EN',
-      values: [
-        {key: 'key1', value: 'enTranslateKey1'},
-        {key: 'key2', value: 'enTranslateKey2'}
-      ]
-    }
-  ];
+  const locales = `${__dirname}/locales/`;
   
   describe('es-ec', () => {
     beforeEach(() => {
-      dictionaryInstance = dictionary({id: 'es-ec', dictionaries});
+      dictionaryInstance = dictionary({id: 'es-ec', locales});
     });
 
     it('should instance dictionary.t and return correct translation', () => {
@@ -34,7 +17,7 @@ fdescribe('when ', () => {
   
   describe('en-us', () => {
     beforeEach(() => {
-      dictionaryInstance = dictionary({id: 'en-us', dictionaries: dictionaries});
+      dictionaryInstance = dictionary({id: 'en-us', locales});
     });
 
     it('should instance dictionary.t and return correct translation', () => {
@@ -45,7 +28,7 @@ fdescribe('when ', () => {
   
   describe('when key not exist ', () => {
     beforeEach(() => {
-      dictionaryInstance = dictionary({id: 'es-ec', dictionaries: dictionaries});
+      dictionaryInstance = dictionary({id: 'es-ec', locales});
     });
     
     it('should instance dictionary.t and return text if translation not exists', () => {

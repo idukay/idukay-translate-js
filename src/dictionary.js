@@ -1,5 +1,13 @@
+import glob from 'glob';
+import path from 'path';
+
 const dictionary = (data) => {
-  const {id, dictionaries} = data;  
+  const {id, locales} = data;
+  
+  const dictionaries = glob.sync(`${locales}/*`).map(file => {
+    return require(path.resolve(file));
+  });
+
   const isArray = Array.isArray(dictionaries[0].values);
 
   if(isArray) {
