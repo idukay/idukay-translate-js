@@ -1,5 +1,3 @@
-var Path = require('path');
-
 const _dictionary = (data) => {
   const {id, locales, isPath} = data;
 
