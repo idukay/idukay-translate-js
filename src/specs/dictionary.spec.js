@@ -2,14 +2,15 @@ import dictionary from 'dictionary';
 
 describe('Dictionary', () => {
   let dictionaryInstance;
-  const locales = [
-    `./specs/locales/en-us`,
-    `./specs/locales/es-ec`
+  
+  const dictionaries = [
+    require(`./locales/en-us.js`),
+    require(`./locales/es-ec`)
   ];
   
   describe('es-ec', () => {
     beforeEach(() => {
-      dictionaryInstance = dictionary({id: 'es-ec', locales});
+      dictionaryInstance = dictionary({id: 'es-ec', dictionaries});
     });
 
     it('should instance dictionary.t and return correct translation', () => {
@@ -20,7 +21,7 @@ describe('Dictionary', () => {
   
   describe('en-us', () => {
     beforeEach(() => {
-      dictionaryInstance = dictionary({id: 'en-us', locales});
+      dictionaryInstance = dictionary({id: 'en-us', dictionaries});
     });
 
     it('should instance dictionary.t and return correct translation', () => {
@@ -31,7 +32,7 @@ describe('Dictionary', () => {
   
   describe('when key not exist ', () => {
     beforeEach(() => {
-      dictionaryInstance = dictionary({id: 'es-ec', locales});
+      dictionaryInstance = dictionary({id: 'es-ec', dictionaries});
     });
     
     it('should instance dictionary.t and return text if translation not exists', () => {

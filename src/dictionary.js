@@ -1,10 +1,6 @@
 const _dictionary = (data) => {
-  const {id, locales, isPath} = data;
+  const {id, dictionaries} = data;
 
-  let dictionaries = locales.map(path => {
-    return require(`${path}.js`);
-  });
-  
   const isArray = Array.isArray(dictionaries[0].values);
 
   if(isArray) {
