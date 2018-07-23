@@ -2,7 +2,10 @@ import dictionary from 'dictionary';
 
 describe('Dictionary', () => {
   let dictionaryInstance;
-  const locales = `${__dirname}/locales/`;
+  const locales = [
+    `./specs/locales/en-us`,
+    `./specs/locales/es-ec`
+  ];
   
   describe('es-ec', () => {
     beforeEach(() => {

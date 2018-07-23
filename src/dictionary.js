@@ -1,13 +1,12 @@
-import glob from 'glob';
-import path from 'path';
+var Path = require('path');
 
-const dictionary = (data) => {
-  const {id, locales} = data;
-  
-  const dictionaries = glob.sync(`${locales}/*`).map(file => {
-    return require(path.resolve(file));
+const _dictionary = (data) => {
+  const {id, locales, isPath} = data;
+
+  let dictionaries = locales.map(path => {
+    return require(`${path}.js`);
   });
-
+  
   const isArray = Array.isArray(dictionaries[0].values);
 
   if(isArray) {
@@ -22,8 +21,6 @@ const dictionary = (data) => {
       dictionary.values = values;
       return dictionary;
     });
-
-    data.instance = true;
   }
   
   const dictionary = dictionaries.find(dictionary => {
@@ -37,4 +34,4 @@ const dictionary = (data) => {
   }
 };
 
-export default dictionary
+export default _dictionary
