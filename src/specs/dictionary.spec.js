@@ -30,9 +30,19 @@ describe('Dictionary', () => {
     });
   });
   
-  describe('when key not exist ', () => {
+  describe('when key not exist', () => {
     beforeEach(() => {
       dictionaryInstance = dictionary({id: 'es-ec', dictionaries});
+    });
+    
+    it('should instance dictionary.t and return text if translation not exists', () => {
+      expect(dictionaryInstance.t('key3', 'esTranslateKey3')).toBe('esTranslateKey3');
+    });
+  });
+  
+  describe('when dictionary not exist', () => {
+    beforeEach(() => {
+      dictionaryInstance = dictionary({id: 'notExist', dictionaries});
     });
     
     it('should instance dictionary.t and return text if translation not exists', () => {

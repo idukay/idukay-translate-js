@@ -16,9 +16,11 @@ const _dictionary = (data) => {
     });
   }
   
-  const dictionary = dictionaries.find(dictionary => {
+  let dictionary = dictionaries.find(dictionary => {
     return dictionary.id === data.id
   });
+  
+  dictionary = dictionary || {values: []};
   
   return {
     t: (key, value) => {
