@@ -1,6 +1,5 @@
 const _dictionary = (data) => {
   const {id, dictionaries} = data;
-
   const isArray = Array.isArray(dictionaries[0].values);
 
   if(isArray) {

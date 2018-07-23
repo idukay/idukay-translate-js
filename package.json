@@ -1,6 +1,6 @@
 {
   "name": "idukay-translate-js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Translate labelsby project json",
   "main": "index.js",
   "repository": "git@github.com:levelap-dev/translate-js.git",
@@ -13,9 +13,7 @@
     "build": "babel src -d lib"
   },
   "dependencies": {
-    "babel-plugin-module-resolver": "^3.1.1",
-    "glob": "^7.1.2",
-    "path": "^0.12.7"
+    "babel-plugin-module-resolver": "^3.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
