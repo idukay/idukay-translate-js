@@ -1,0 +1,17 @@
+{
+  "name": "idukay-translate-js",
+  "description": "Translate labels by json",
+  "main": "index.js",
+  "authors": [
+    "Idukay"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/levelap-dev/translate-js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
