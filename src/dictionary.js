@@ -1,4 +1,4 @@
-const _dictionary = (data) => {
+const instance = (data) => {
   const {id, dictionaries} = data;
   const isArray = Array.isArray(dictionaries[0].values);
 
@@ -21,12 +21,13 @@ const _dictionary = (data) => {
   });
   
   dictionary = dictionary || {values: []};
-  
-  return {
-    t: (key, value) => {
-      return dictionary.values[key] || value;
-    }
-  }
+  localStorage.setItem('idukayTranslateJS', JSON.stringify(dictionary));
 };
 
-export default _dictionary
+var t = function t(key, value) {
+  return JSON.parse(localStorage.getItem('idukayTranslateJS')).values[key] || value;
+};
+
+export default instance;
+
+export {t};
