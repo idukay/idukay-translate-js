@@ -1,5 +1,4 @@
-const instance = (data) => {
-  const {id, dictionaries} = data;
+const instance = ({id = JSON.parse(localStorage.getItem('idukayTranslateJS')).id, dictionaries}) => {
   const isArray = Array.isArray(dictionaries[0].values);
 
   if(isArray) {
@@ -17,7 +16,7 @@ const instance = (data) => {
   }
   
   let dictionary = dictionaries.find(dictionary => {
-    return dictionary.id === data.id
+    return dictionary.id === id;
   });
   
   dictionary = dictionary || {values: []};

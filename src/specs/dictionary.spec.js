@@ -52,4 +52,21 @@ describe('Dictionary', () => {
       expect(t('key3', 'esTranslateKey3')).toBe('esTranslateKey3');
     });
   });
+  
+  describe('when dictionary instance without id', () => {
+    beforeEach(() => {
+      const newDictionaries = [{
+        id: 'en-us',
+        label: 'EN',
+        values: {newKey: 'newKeyValue'}
+      }];
+      
+      localStorage.setItem('idukayTranslateJS', JSON.stringify({id: 'en-us'}));
+      dictionary({dictionaries: newDictionaries});
+    });
+    
+    it('should instance t and return new value', () => {
+      expect(t('newKey', 'value')).toBe('newKeyValue');
+    });
+  });
 });

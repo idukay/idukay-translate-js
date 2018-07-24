@@ -1,3 +1,5 @@
-import dictionary from './dictionary';
+import dictionary, {t} from './dictionary';
 
 export default dictionary;
+
+export {t};
