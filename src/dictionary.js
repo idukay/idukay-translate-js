@@ -33,10 +33,10 @@
   var root = typeof self == 'object' && self.self === self && self || typeof global == 'object' && global.global === global && global || this || {};
 
   if (typeof exports !== 'undefined' && !exports.nodeType) {
-    exports.dictionary = dictionary;
+    exports.translateJs = dictionary;
     exports.t = t;
   } else {
-    root.translateJs = instance;
+    root.translateJs = dictionary;
     root.t = t;
   }
 }());
