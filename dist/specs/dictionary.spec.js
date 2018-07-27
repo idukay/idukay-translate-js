@@ -22,7 +22,7 @@ describe('Dictionary', function () {
 
       it('should instance dictionary.t and return correct translation', function () {
         expect((0, _dictionary.t)('key1', 'enOtherText1')).toBe('esTranslateKey1');
-        expect((0, _dictionary.t)('key2', 'enOtherText2')).toBe('esTranslateKey2');
+        expect((0, _dictionary.t)('kEY2', 'enOtherText2')).toBe('esTranslateKey2');
       });
     });
 
@@ -62,7 +62,7 @@ describe('Dictionary', function () {
         var newDictionaries = [{
           id: 'en-us',
           label: 'EN',
-          values: { newKey: 'newKeyValue' }
+          values: { newkey: 'newKeyValue' }
         }];
 
         localStorage.setItem('idukayTranslateJS', JSON.stringify({ id: 'en-us' }));
@@ -71,6 +71,20 @@ describe('Dictionary', function () {
 
       it('should instance t and return new value', function () {
         expect((0, _dictionary.t)('newKey', 'value')).toBe('newKeyValue');
+      });
+    });
+
+    describe('when not has localStorage', function () {
+      beforeEach(function () {
+        var newDictionaries = [{
+          id: undefined
+        }];
+
+        (0, _dictionary.dictionary)({ dictionaries: newDictionaries });
+      });
+
+      it('should instance t and return value', function () {
+        expect((0, _dictionary.t)('key', 'value')).toBe('value');
       });
     });
   });
