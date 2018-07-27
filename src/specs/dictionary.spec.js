@@ -18,7 +18,7 @@ describe('Dictionary', () => {
 
       it('should instance dictionary.t and return correct translation', () => {
         expect(t('key1', 'enOtherText1')).toBe('esTranslateKey1');
-        expect(t('key2', 'enOtherText2')).toBe('esTranslateKey2');
+        expect(t('kEY2', 'enOtherText2')).toBe('esTranslateKey2');
       });
     });
 
@@ -58,7 +58,7 @@ describe('Dictionary', () => {
         const newDictionaries = [{
           id: 'en-us',
           label: 'EN',
-          values: {newKey: 'newKeyValue'}
+          values: {newkey: 'newKeyValue'}
         }];
 
         localStorage.setItem('idukayTranslateJS', JSON.stringify({id: 'en-us'}));
@@ -67,6 +67,20 @@ describe('Dictionary', () => {
 
       it('should instance t and return new value', () => {
         expect(t('newKey', 'value')).toBe('newKeyValue');
+      });
+    });
+    
+    describe('when not has localStorage', () => {
+      beforeEach(() => {
+        const newDictionaries = [{
+          id: undefined
+        }];
+
+        dictionary({dictionaries: newDictionaries});
+      });
+
+      it('should instance t and return value', () => {
+        expect(t('key', 'value')).toBe('value');
       });
     });
   });

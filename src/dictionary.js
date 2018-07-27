@@ -1,6 +1,8 @@
 (function() {
-  const dictionary = ({id = JSON.parse(localStorage.getItem('idukayTranslateJS')).id, dictionaries}) => {
+  const dictionary = ({id, dictionaries}) => {
+    const storage = JSON.parse(localStorage.getItem('idukayTranslateJS')) || {};
     const isArray = Array.isArray(dictionaries[0].values);
+    const dictionaryId = id || storage.id;
 
     if(isArray) {
       dictionaries.forEach(dictionary => {
@@ -17,15 +19,15 @@
     }
 
     let dictionary = dictionaries.find(dictionary => {
-      return dictionary.id === id;
+      return dictionary.id === dictionaryId;
     });
 
-    dictionary = dictionary || {values: []};
+    dictionary = Object.assign({values: []}, dictionary);
     localStorage.setItem('idukayTranslateJS', JSON.stringify(dictionary));
   };
 
   const t = (key, value) => {
-    return JSON.parse(localStorage.getItem('idukayTranslateJS')).values[key] || value;
+    return JSON.parse(localStorage.getItem('idukayTranslateJS')).values[key.toLowerCase()] || value;
   };
 
   var root = typeof self == 'object' && self.self === self && self || typeof global == 'object' && global.global === global && global || this || {};
