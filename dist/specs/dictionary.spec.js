@@ -17,18 +17,18 @@ describe('Dictionary', function () {
   describe('when is node', function () {
     describe('es-ec', function () {
       beforeEach(function () {
-        (0, _dictionary.dictionary)({ id: 'es-ec', dictionaries: dictionaries });
+        (0, _dictionary.translateJs)({ id: 'es-ec', dictionaries: dictionaries });
       });
 
       it('should instance dictionary.t and return correct translation', function () {
         expect((0, _dictionary.t)('key1', 'enOtherText1')).toBe('esTranslateKey1');
-        expect((0, _dictionary.t)('kEY2', 'enOtherText2')).toBe('esTranslateKey2');
+        expect((0, _dictionary.t)('KeY2', 'enOtherText2')).toBe('EsTranslateKey2');
       });
     });
 
     describe('en-us', function () {
       beforeEach(function () {
-        (0, _dictionary.dictionary)({ id: 'en-us', dictionaries: dictionaries });
+        (0, _dictionary.translateJs)({ id: 'en-us', dictionaries: dictionaries });
       });
 
       it('should instance dictionary.t and return correct translation', function () {
@@ -39,7 +39,7 @@ describe('Dictionary', function () {
 
     describe('when key not exist', function () {
       beforeEach(function () {
-        (0, _dictionary.dictionary)({ id: 'es-ec', dictionaries: dictionaries });
+        (0, _dictionary.translateJs)({ id: 'es-ec', dictionaries: dictionaries });
       });
 
       it('should instance dictionary.t and return text if translation not exists', function () {
@@ -49,11 +49,12 @@ describe('Dictionary', function () {
 
     describe('when dictionary not exist', function () {
       beforeEach(function () {
-        (0, _dictionary.dictionary)({ id: 'notExist', dictionaries: dictionaries });
+        (0, _dictionary.translateJs)({ id: 'notExist', dictionaries: dictionaries });
       });
 
       it('should instance dictionary.t and return text if translation not exists', function () {
         expect((0, _dictionary.t)('key3', 'esTranslateKey3')).toBe('esTranslateKey3');
+        expect((0, _dictionary.t)('Key3', 'esTranslateKey3')).toBe('EsTranslateKey3');
       });
     });
 
@@ -66,7 +67,7 @@ describe('Dictionary', function () {
         }];
 
         localStorage.setItem('idukayTranslateJS', JSON.stringify({ id: 'en-us' }));
-        (0, _dictionary.dictionary)({ dictionaries: newDictionaries });
+        (0, _dictionary.translateJs)({ dictionaries: newDictionaries });
       });
 
       it('should instance t and return new value', function () {
@@ -80,7 +81,7 @@ describe('Dictionary', function () {
           id: undefined
         }];
 
-        (0, _dictionary.dictionary)({ dictionaries: newDictionaries });
+        (0, _dictionary.translateJs)({ dictionaries: newDictionaries });
       });
 
       it('should instance t and return value', function () {

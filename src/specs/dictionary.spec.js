@@ -1,7 +1,7 @@
 import LocalStorageMock from './localStorage';
 global.localStorage = new LocalStorageMock;
 
-import {dictionary, t} from 'dictionary';
+import {translateJs, t} from 'dictionary';
 
 describe('Dictionary', () => {
   let dictionaryInstance;
@@ -13,18 +13,18 @@ describe('Dictionary', () => {
   describe('when is node', () => {
     describe('es-ec', () => {
       beforeEach(() => {
-        dictionary({id: 'es-ec', dictionaries});
+        translateJs({id: 'es-ec', dictionaries});
       });
 
       it('should instance dictionary.t and return correct translation', () => {
         expect(t('key1', 'enOtherText1')).toBe('esTranslateKey1');
-        expect(t('kEY2', 'enOtherText2')).toBe('esTranslateKey2');
+        expect(t('KeY2', 'enOtherText2')).toBe('EsTranslateKey2');
       });
     });
 
     describe('en-us', () => {
       beforeEach(() => {
-        dictionary({id: 'en-us', dictionaries});
+        translateJs({id: 'en-us', dictionaries});
       });
 
       it('should instance dictionary.t and return correct translation', () => {
@@ -35,7 +35,7 @@ describe('Dictionary', () => {
 
     describe('when key not exist', () => {
       beforeEach(() => {
-        dictionary({id: 'es-ec', dictionaries});
+        translateJs({id: 'es-ec', dictionaries});
       });
 
       it('should instance dictionary.t and return text if translation not exists', () => {
@@ -45,11 +45,12 @@ describe('Dictionary', () => {
 
     describe('when dictionary not exist', () => {
       beforeEach(() => {
-        dictionary({id: 'notExist', dictionaries});
+        translateJs({id: 'notExist', dictionaries});
       });
 
       it('should instance dictionary.t and return text if translation not exists', () => {
         expect(t('key3', 'esTranslateKey3')).toBe('esTranslateKey3');
+        expect(t('Key3', 'esTranslateKey3')).toBe('EsTranslateKey3');
       });
     });
 
@@ -62,7 +63,7 @@ describe('Dictionary', () => {
         }];
 
         localStorage.setItem('idukayTranslateJS', JSON.stringify({id: 'en-us'}));
-        dictionary({dictionaries: newDictionaries});
+        translateJs({dictionaries: newDictionaries});
       });
 
       it('should instance t and return new value', () => {
@@ -76,7 +77,7 @@ describe('Dictionary', () => {
           id: undefined
         }];
 
-        dictionary({dictionaries: newDictionaries});
+        translateJs({dictionaries: newDictionaries});
       });
 
       it('should instance t and return value', () => {

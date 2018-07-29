@@ -34,7 +34,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   };
 
   var t = function t(key, value) {
-    return JSON.parse(localStorage.getItem('idukayTranslateJS')).values[key.toLowerCase()] || value;
+    var isLowerCase = key[0].toUpperCase() === key.charAt(0);
+    var translate = JSON.parse(localStorage.getItem('idukayTranslateJS')).values[key.toLowerCase()] || value;
+    return isLowerCase ? '' + translate.charAt(0).toUpperCase() + translate.slice(1) : translate;
   };
 
   var root = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self.self === self && self || (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global.global === global && global || this || {};
