@@ -35,7 +35,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   var t = function t(key, value) {
     var isLowerCase = key[0].toUpperCase() === key.charAt(0);
-    var translate = JSON.parse(localStorage.getItem('idukayTranslateJS')).values[key.toLowerCase()] || value;
+    var localDictionary = localStorage.getItem('idukayTranslateJS') ? JSON.parse(localStorage.getItem('idukayTranslateJS')) : { values: [] };
+    var translate = localDictionary.values[key.toLowerCase()] || value;
     return isLowerCase ? '' + translate.charAt(0).toUpperCase() + translate.slice(1) : translate;
   };
 
