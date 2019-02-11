@@ -1,14 +1,6 @@
 'use strict';
 
-var _localStorage = require('./localStorage');
-
-var _localStorage2 = _interopRequireDefault(_localStorage);
-
 var _dictionary = require('../dictionary');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-global.localStorage = new _localStorage2.default();
 
 describe('Dictionary', function () {
   var dictionaryInstance = void 0;
@@ -66,7 +58,7 @@ describe('Dictionary', function () {
           values: { newkey: 'newKeyValue' }
         }];
 
-        localStorage.setItem('idukayTranslateJS', JSON.stringify({ id: 'en-us' }));
+        (0, _dictionary.translateJs)({ id: 'en-us', dictionaries: dictionaries });
         (0, _dictionary.translateJs)({ dictionaries: newDictionaries });
       });
 
@@ -89,4 +81,5 @@ describe('Dictionary', function () {
       });
     });
   });
-});
+}); //import LocalStorageMock from './localStorage';
+//global.localStorage = new LocalStorageMock;

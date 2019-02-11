@@ -1,6 +1,3 @@
-import LocalStorageMock from './localStorage';
-global.localStorage = new LocalStorageMock;
-
 import {translateJs, t} from 'dictionary';
 
 describe('Dictionary', () => {
@@ -62,7 +59,7 @@ describe('Dictionary', () => {
           values: {newkey: 'newKeyValue'}
         }];
 
-        localStorage.setItem('idukayTranslateJS', JSON.stringify({id: 'en-us'}));
+        translateJs({id: 'en-us', dictionaries});
         translateJs({dictionaries: newDictionaries});
       });
 
