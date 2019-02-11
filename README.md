@@ -1,9 +1,9 @@
 # translate-js
 
-### import {translateJs, t} from 'dictionary';
+#### `import {translateJs, t} from 'dictionary';`
 
 ## instance dictionaries 
-### translateJs({_id: 'dictionaryId', [dictionariesArray]});
+#### `translateJs({_id: 'dictionaryId', [dictionariesArray]});`
 
 ## use 
-### t('key', 'defaultValue');
+#### `t('key', 'defaultValue');`
