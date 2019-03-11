@@ -1,7 +1,7 @@
 {
   "name": "idukay-translate-js",
-  "version": "0.0.13",
-  "description": "Translate labelsby project json",
+  "version": "0.0.15",
+  "description": "Translate labels by project json",
   "main": "index.js",
   "repository": "git@github.com:levelap-dev/translate-js.git",
   "author": "Idukay",
