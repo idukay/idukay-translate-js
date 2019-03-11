@@ -2,7 +2,7 @@
 
 var _dictionary = require('../dictionary');
 
-describe('Dictionary', function () {
+fdescribe('Dictionary', function () {
   var dictionaryInstance = void 0;
   var dictionaries = [require('./locales/en-us.js'), require('./locales/es-ec')];
 
@@ -65,6 +65,10 @@ describe('Dictionary', function () {
       it('should instance t and return new value', function () {
         expect((0, _dictionary.t)('newKey', 'value')).toBe('newKeyValue');
       });
+
+      it('should instance t and return new value', function () {
+        expect((0, _dictionary.t)(null, null)).toBeUndefined();
+      });
     });
 
     describe('when not has localStorage', function () {
@@ -81,5 +85,4 @@ describe('Dictionary', function () {
       });
     });
   });
-}); //import LocalStorageMock from './localStorage';
-//global.localStorage = new LocalStorageMock;
+});

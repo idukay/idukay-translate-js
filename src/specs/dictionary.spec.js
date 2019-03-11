@@ -1,6 +1,6 @@
 import {translateJs, t} from 'dictionary';
 
-describe('Dictionary', () => {
+fdescribe('Dictionary', () => {
   let dictionaryInstance;
   const dictionaries = [
     require(`./locales/en-us.js`),
@@ -65,6 +65,10 @@ describe('Dictionary', () => {
 
       it('should instance t and return new value', () => {
         expect(t('newKey', 'value')).toBe('newKeyValue');
+      });
+      
+      it('should instance t and return new value', () => {
+        expect(t(null, null)).toBeUndefined();
       });
     });
     
