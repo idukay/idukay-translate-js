@@ -9,7 +9,7 @@
     if(isArray) {
       dictionaries.forEach(dictionary => {
         let values = {};
-        dictionary.values = dictionary.values || [];
+        dictionary.values = dictionary.values || {};
 
         dictionary.values.forEach((value) => {
           values[value.key] = value.value;
@@ -24,13 +24,13 @@
       return dictionary.id === dictionaryId;
     });
     
-    dictionary = Object.assign({values: []}, dictionary);
+    dictionary = Object.assign({values: {}}, dictionary);
   };
 
   const t = (key, value) => {
     if (key) {
       const isLowerCase = key[0].toUpperCase() === key.charAt(0);
-      const localDictionary = dictionary || {values: []};
+      const localDictionary = dictionary || {values: {}};
       const translate = localDictionary.values[key.toLowerCase()] || value
       return isLowerCase ? `${translate.charAt(0).toUpperCase()}${translate.slice(1)}` : translate;
     }

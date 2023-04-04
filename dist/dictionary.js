@@ -16,7 +16,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     if (isArray) {
       dictionaries.forEach(function (dictionary) {
         var values = {};
-        dictionary.values = dictionary.values || [];
+        dictionary.values = dictionary.values || {};
 
         dictionary.values.forEach(function (value) {
           values[value.key] = value.value;
@@ -31,13 +31,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       return dictionary.id === dictionaryId;
     });
 
-    dictionary = Object.assign({ values: [] }, dictionary);
+    dictionary = Object.assign({ values: {} }, dictionary);
   };
 
   var t = function t(key, value) {
     if (key) {
       var isLowerCase = key[0].toUpperCase() === key.charAt(0);
-      var localDictionary = dictionary || { values: [] };
+      var localDictionary = dictionary || { values: {} };
       var _translate = localDictionary.values[key.toLowerCase()] || value;
       return isLowerCase ? '' + _translate.charAt(0).toUpperCase() + _translate.slice(1) : _translate;
     }
